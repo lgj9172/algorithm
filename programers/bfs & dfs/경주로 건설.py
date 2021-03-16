@@ -1,6 +1,5 @@
 from collections import deque
 from copy import deepcopy
-import pprint
 
 
 def solution(board):
@@ -51,8 +50,6 @@ def solution(board):
                 point + 100 if vector == "none" or vector == "north" else point + 600,
             )
         )
-    pprint.pprint
-    (db)
     answer = db[-1][-1]
     return answer
 
