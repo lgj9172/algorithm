@@ -32,7 +32,7 @@ def solution(n, path, order):
             if not visited[next]:
                 queue.append(next)
         visited[target] = True
-    return True if sum(visited) == n else False
+    return True if all(visited) else False
 
 
 if __name__ == '__main__':
