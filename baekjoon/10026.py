@@ -32,9 +32,7 @@ def solution():
                     queue.extend([(row, col-1, "normal"), (row, col+1, "normal"),
                                  (row-1, col, "normal"), (row+1, col, "normal")])
                 else:
-                    if history_blindness[row][col] == False and (color == picture[row][col] or (color in ["R", "G"] and picture[row][col] in ["R", "G"])):
-                        pass
-                    else:
+                    if not(history_blindness[row][col] == False and (color == picture[row][col] or (color in ["R", "G"] and picture[row][col] in ["R", "G"]))):
                         continue
                     history_blindness[row][col] = True
                     queue.extend([(row, col-1, "blindness"), (row, col+1, "blindness"),
