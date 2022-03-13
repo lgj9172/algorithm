@@ -5,14 +5,13 @@ def solution():
   input = sys.stdin.readline
   N = int(input())
   MAP = [list(map(int, input().split())) for _ in range(N)]
-  q = []
   for row in range(N):
     for col in range(N):
       if MAP[row][col] == 9:
-        q.append((0, row, col))
+        q = [(0, row, col)]
         MAP[row][col] = 0
         break
-  visited = [[False for _ in range(N)] for _ in range(N)]
+  visited = [[False]*N for _ in range(N)]
   shark_size, kill_count, answer = 2, 0, 0
   d = ((-1, 0), (1, 0), (0, -1), (0, 1))
   while q:
@@ -28,7 +27,7 @@ def solution():
       visited[row][col] = True
     if 0 < fish_size < shark_size:
       q = [(time, row, col)]
-      visited = [[False for _ in range(N)] for _ in range(N)]
+      visited = [[False]*N for _ in range(N)]
       MAP[row][col] = 0
       answer = time
       kill_count += 1
@@ -38,6 +37,6 @@ def solution():
       continue
     for dx, dy in d:
       heappush(q, (time+1, row+dx, col+dy))
-  sys.stdout.write(f'{answer}\n')
+  print(f'{answer}')
     
 solution()
