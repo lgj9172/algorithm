@@ -1,23 +1,22 @@
 import sys
-from collections import deque
+from heapq import heappop, heappush
 
 def solution():
   input = sys.stdin.readline
   N = int(input())
   MAP = [list(map(int, input().split())) for _ in range(N)]
-  x, y = 0, 0
+  q = []
   for row in range(N):
     for col in range(N):
       if MAP[row][col] == 9:
-        x, y = row, col
+        q.append((0, row, col))
         MAP[row][col] = 0
-  q = deque([(x, y, 0)]) # (row, col, time)
+        break
   visited = [[False for _ in range(N)] for _ in range(N)]
-  shark_size = 2
-  kill_count = 0
-  answer = 0
+  shark_size, kill_count, answer = 2, 0, 0
+  d = ((-1, 0), (1, 0), (0, -1), (0, 1))
   while q:
-    row, col, time = q.popleft()
+    time, row, col = heappop(q)
     if not(0<=row<N) or not(0<=col<N):
       continue
     fish_size = MAP[row][col]
@@ -28,7 +27,7 @@ def solution():
     else:
       visited[row][col] = True
     if 0 < fish_size < shark_size:
-      q = deque([(row, col, time)])
+      q = [(time, row, col)]
       visited = [[False for _ in range(N)] for _ in range(N)]
       MAP[row][col] = 0
       answer = time
@@ -37,9 +36,8 @@ def solution():
         shark_size += 1
         kill_count = 0
       continue
-    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-      q.append((row+dx, col+dy, time+1))
-    q = deque(sorted(q, key=lambda e:(e[2], e[0], e[1])))
-  print(answer)
+    for dx, dy in d:
+      heappush(q, (time+1, row+dx, col+dy))
+  sys.stdout.write(f'{answer}\n')
     
 solution()
