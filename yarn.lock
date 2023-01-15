@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@datastructures-js/heap@^4.1.2":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@datastructures-js/heap/-/heap-4.3.1.tgz#d3752b5664202b99b41815f6117e501d8f66c632"
+  integrity sha512-au4fYa4fprREES58FnMOTFjg8lCYpSenF5tBu8C/iweMaj02rAOZUqlLUCqR3HIWzNfgTeCmAiyRHdjJVHrsIQ==
+
+"@datastructures-js/priority-queue@datastructures-js/priority-queue":
+  version "6.1.4"
+  resolved "https://codeload.github.com/datastructures-js/priority-queue/tar.gz/1c86d834883ec3a1cc24e87380d9f527318499f4"
+  dependencies:
+    "@datastructures-js/heap" "^4.1.2"
+
 typescript@^4.8.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"

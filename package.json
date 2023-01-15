@@ -7,5 +7,8 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@datastructures-js/priority-queue": "datastructures-js/priority-queue"
   }
 }
